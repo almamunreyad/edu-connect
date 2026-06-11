@@ -2,6 +2,7 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/sonner";
+import { dbConnect } from "@/service/mongo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,7 +25,10 @@ export const metadata = {
   description: "EduConnect is a platform for education and learning",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const conn = await dbConnect();
+  console.log("Connected to MongoDB", conn);
+
   return (
     <html
       lang="en"
