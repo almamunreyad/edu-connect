@@ -33,8 +33,8 @@ const CourseModuleList = ({ module }) => {
 
         <div className="space-y-3">
           {module?.lessonIds &&
-            module?.lessonIds.map((lessonId) => (
-              <CourseLessonList lessonId={lessonId} />
+            module?.lessonIds.map((lessonId, index) => (
+              <CourseLessonList key={index} lessonId={lessonId} />
             ))}
         </div>
       </AccordionContent>
